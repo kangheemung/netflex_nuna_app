@@ -1,23 +1,40 @@
-import logo from './logo.svg';
 import './App.css';
+import {Routes,Route} from 'react-router-dom';
+import AppLayout from './layout/AppLayout';
+import Homepage from './pages/Homepage/Homepage';
+import MoviePage from './pages/Movies/MoviePage';
+import MoviesDetail from './pages/MovieDetail/MoviesDetail';
+import Notfoundpage from './pages/Notfound/Notfoundpage';
+
+
 
 function App() {
+  //homepage /
+  //moviefullpage /movies
+   //moviedetailpage /movies/:id
+//추천 영화 /movies/:id/recommandation
+//리뷰 /movies/:id/reviews
   return (
+ 
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+         <AppLayout/>
+     <Routes>
+     <Route path="/" elements={ AppLayout}/>   {/*//user 화면 */}
+      <Route index  elements={ Homepage}/>
+      <Route path="movies">{/*//Moviegroup 화면 */}
+        <Route index elements={MoviePage}/>
+        <Route path=":id" index elements={ MoviesDetail}/>
+      </Route>
+    
+    
+    <Route path="*" elements={ Notfoundpage}/>   {/*/Notfoundpage화면 */}
+
+
+      {/* <Route path="/admin" elements={ AppLayout}> //admin 화면 */}
+
+
+     </Routes>
+
     </div>
   );
 }
