@@ -27,7 +27,7 @@ function App() {
       </Route>
     
     
-    <Route path="*" elements={ Notfoundpage}/>   {/*/Notfoundpage화면 */}
+    <Route path="*" elements={ Notfoundpage}/>   {/*/Notfoundpage 화면 */}
 
 
       {/* <Route path="/admin" elements={ AppLayout}> //admin 화면 */}
