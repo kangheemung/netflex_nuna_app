@@ -4,7 +4,7 @@ import './MoviePage.style.css';
 const MoviePage = () => {
   return (
     <div>
-      
+      MoviePage
     </div>
   )
 }

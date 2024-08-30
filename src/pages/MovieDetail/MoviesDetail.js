@@ -4,7 +4,7 @@ import './MoviesDetail.style.css';
 const MoviesDetail = () => {
   return (
     <div>
-      
+      MoviesDetail 
     </div>
   )
 }
