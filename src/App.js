@@ -13,21 +13,19 @@ function App() {
    //moviedetailpage /movies/:id
 //추천 영화 /movies/:id/recommandation
 //리뷰 /movies/:id/reviews
+
   return (
     <div className="App">
       <Routes>
         <Route path="/" element={<AppLayout />}>
           <Route index element={<Homepage />} />
-        
           {/* Movie Pages */}
           <Route path = "movies">
             <Route index element={<MoviePage />}/>  {/*//Moviegroup 화면 */}
             <Route path=":id" element={<MoviesDetail/>}/>
           </Route>
-
              {/* Not Found Page */}
-        <Route path="*" element={<Notfoundpage />}/>   {/*/Notfoundpage 화면 */}
-
+          <Route path="*" element={<Notfoundpage />}/>   {/*/Notfoundpage 화면 */}
           {/* <Route path="/admin" elements={ AppLayout}> //admin 화면 */}
         </Route>
       </Routes>
@@ -35,5 +33,6 @@ function App() {
     </div>
   );
 }
+
 
 export default App;

@@ -31,7 +31,7 @@ const AppLayout = () => {
             <Nav.Link href="/movies">Movies</Nav.Link>
             <Nav.Link href="/movies/:id">MoviesDetail</Nav.Link>
           </Nav>
-          <Form inline>
+          <Form  inline="true">
         <Row>
           <Col xs="auto">
             <Form.Control
