@@ -1,0 +1,15 @@
+
+.not-found_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .not-found {
+    font-size: 24px;
+    color: red; /* Pink color */
+    text-align: center;
+    font-family: 'Comic Sans MS', cursive;
+  }
+  
