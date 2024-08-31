@@ -31,7 +31,7 @@ const PopularMovieSlide = () => {
     return <Alert variant="danger">{error.message}</Alert>;
   }
 return (<div>
-  <h3>popular title</h3>
+  <h3>Popular movies</h3>
 
 <Carousel
   // swipeable={false}
@@ -52,12 +52,10 @@ return (<div>
   // dotListClass="custom-dot-list-style"
   itemClass = "movie-slider p-1"
 >
-  <div> {data.results.map((movie, index) => (
+  {data.results.map((movie, index) => (
           <MovieCard movie={movie} key={index} />
-        ))}</div>
-  <div>Item </div>
-  <div>Item </div>
-  <div>Item </div>
+        ))}
+
 </Carousel>
   </div>
   );

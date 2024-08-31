@@ -1,11 +1,36 @@
 import React from 'react'
+import Badge from 'react-bootstrap/Badge';
 
-const MovieCard = () => {
+const MovieCard = ({movie,index}) => {
   return (
-    <div>
+    <div
+    style={{
+      backgroundImage:
+        "url(" +
+        `https://api.themoviedb.org/t/p/w600_and_h900_besttv${movie.poster_path}` +
+        ")"
+    }}
+  >
+        <div key={index}>
+            <h1>{movie.title}</h1>
+            <h3>
+            {movie.genre_ids.map((id) => (
+              <Badge pill bg="danger" key={id}>
+                 {id}
+               </Badge>
+           ))}
+            </h3>
+            <div>
+                <div>{movie.vote_average}</div>
+                <div>{movie.popularity}</div>
+                <div>{movie.adult?'over18':'under18'}</div>
+            </div>
+
+        </div>
       MovieCard
     </div>
-  )
+   );
+
 }
 
 export default MovieCard

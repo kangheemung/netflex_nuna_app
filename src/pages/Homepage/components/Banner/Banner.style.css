@@ -1,0 +1,6 @@
+.banner {
+    width: 100%; /* Set width of banner */
+    height: 300px; /* Set height of banner */
+    background-size: cover; /* Scale the background image to cover the entire container */
+    background-position: center; /* Center the background image */
+  }
