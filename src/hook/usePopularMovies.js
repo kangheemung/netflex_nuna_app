@@ -1,9 +1,13 @@
 import { useQuery } from "@tanstack/react-query";
 
 import api from "../utils/api";
-
-const fetchPopularMovies = () => {
-    return api.get('/movie/popular');
+const fetchPopularMovies = async () => {
+    try {
+        const response = await api.get('/movie/popular');
+        return response.data;
+    } catch (error) {
+        throw new Error('Failed to fetch popular movies');
+    }
 };
 export const usePopularMoviesQuery= ()=>{
     return useQuery({
