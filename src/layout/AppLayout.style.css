@@ -1,8 +1,46 @@
-.Navbar_full{
-    flex-wrap: wrap;
 
+.header_text{
+    display: block;
 }
+
 
 .loge_img{
     margin-right: 10px;
+}
+.sidebar {
+    display: none;
+    background-color: black;
+    height: 100vh;
+    width: 50%;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+.sidebar.open {
+    display: block;
+}
+
+.hanberger{
+display: none;
+}
+.sidebar{display: none}
+@media (max-width: 768px) {
+    .Navbar_full {
+        flex-direction: column;
+        align-items: center;
+
+    }
+.hanberger{
+display: block;
+    filter: invert(100%); /* Inverts the color to white */
+}
+.header_text{
+    display: none;
+}
+
+    .loge_img {
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
 }
