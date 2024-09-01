@@ -5,12 +5,12 @@
   color: white;
   height: 100vh;
 }
-@media (max-width: 368px) {
+@media (max-width: 768px) {
   .App {
     flex-wrap: wrap;
-    /* Adjust styles for better mobile responsiveness */
-    padding: 20px; /* Add padding for better spacing */
+    background-color: black;
+
     font-size: 14px; /* Reduce font size for readability on smaller screens */
-    height: auto; /* Allow content to expand vertically */
+    height: 100vh; /* Allow content to expand vertically */
   }
 }

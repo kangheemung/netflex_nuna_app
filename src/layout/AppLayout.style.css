@@ -2,10 +2,11 @@
 .header_text{
     display: block;
 }
-
-
 .loge_img{
     margin-right: 10px;
+}
+.container {
+    width: 100vw;
 }
 .sidebar {
     display: none;
@@ -15,14 +16,29 @@
     position: fixed;
     top: 0;
     left: 0;
-}
+    z-index: 9999;
+    justify-items: center;
+    text-align: center;
+    color: white;
 
+    padding: 1em;
+}
+.button_sidebar{
+    margin-top: 20px;
+}
 .sidebar.open {
     display: block;
 }
-
 .hanberger{
 display: none;
+}
+.navbar-collapse {
+    justify-content: space-between;
+    display: flex;
+}
+.align-top{
+    margin-right: 20px;
+    margin-top: 10px;
 }
 .sidebar{display: none}
 @media (max-width: 768px) {
@@ -32,10 +48,12 @@ display: none;
 
     }
 .hanberger{
+    margin-right: 1em;
 display: block;
     filter: invert(100%); /* Inverts the color to white */
 }
-.header_text{
+.header_text,
+.search_box{
     display: none;
 }
 

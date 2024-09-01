@@ -24,11 +24,11 @@ const AppLayout = () => {
         <Container>
         <img
             src={hambergerIcon}
-            width="50"
-            height="50"
+            width="45"
+            height="45"
             className='hanberger'
             onClick={toggleSidebar}
-            /> 
+            />
           <div className='loge_img'>
     
         <img
@@ -51,7 +51,7 @@ const AppLayout = () => {
             <Nav.Link href="/movies/:id">MoviesDetail</Nav.Link>
           </Nav>
           </div>
-          <div>
+          <div className='search_box'>
             <Form  inline="true">
               <Row className="justify-content-center">
               <Col xs="auto">
@@ -77,6 +77,20 @@ const AppLayout = () => {
                 <Nav.Link href="/movies">Movies</Nav.Link>
                 <Nav.Link href="/movies/:id">MoviesDetail</Nav.Link>
               </Nav>
+              <Form  inline="true">
+              <Row className="justify-content-center">
+              <Col xs="auto">
+                <Form.Control
+                  type="text"
+                  placeholder="Search"
+                  className=" mr-sm-2"
+                />
+              </Col>
+              <Col xs="auto">
+                <Button className="button_sidebar"variant="outline-danger">Submit</Button>
+              </Col>
+               </Row>
+            </Form>
             </div>
 
             {/* Sidebar End */}
