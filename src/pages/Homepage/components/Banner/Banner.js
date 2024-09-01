@@ -1,7 +1,7 @@
 import React from 'react'
 import './Banner.style.css'
-;import { usePopularMoviesQuery } from '../../../../hook/usePopularMovies';
-
+import { usePopularMoviesQuery } from '../../../../hook/usePopularMovies';
+import { Alert } from 'react-bootstrap';
 const Banner = () => {
   const{data, isLoading, isError, error} = usePopularMoviesQuery();
     console.log("ddd", data);
@@ -10,13 +10,17 @@ const Banner = () => {
     }
   
     if (isError) {
-      return <div>Error: {error.message}</div>;
+      return <Alert variant='danger'>Error: {error.message}</Alert>;
     }
-    const imageUrl = data?.results[0]?.backdrop_path;
+  
     return (
       <div style={{
-        backgroundImage: `url(${imageUrl})`
-      }}>
+        backgroundImage: "url("+`https://www.themoviedb.org/t/p/w600_and_h900_bestv2${data.results[0].backdrop_path}`+")"
+      }} className='banner'>
+        <div className='banner-text-area'>
+          <h1 className='title'>{data.results[0].title}</h1>
+          <p>{data.results[0].overview}</p>
+        </div>
 
     </div>
   );

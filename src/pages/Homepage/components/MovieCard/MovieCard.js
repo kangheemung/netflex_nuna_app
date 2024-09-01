@@ -6,10 +6,11 @@ const MovieCard = ({movie,index}) => {
     <div
     style={{
       backgroundImage:
-        "url(" +
-        `https://api.themoviedb.org/t/p/w600_and_h900_besttv${movie.poster_path}` +
+        "url("+
+        `https://www.themoviedb.org/t/p/w600_and_h900_bestv2${movie.poster_path}` +
         ")"
     }}
+    className='banner'
   >
         <div key={index}>
             <h1>{movie.title}</h1>
