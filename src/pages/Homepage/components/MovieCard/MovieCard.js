@@ -13,9 +13,9 @@ const MovieCard = ({movie,index}) => {
     }}
     className='MovieCard'
   >
-        <div key={index}>
+        <div key={index} >
           <div className='Movie_Card_text'>
-            <h4>{movie.title}</h4>
+            <h5>{movie.title}</h5>
             <p>
             {movie.genre_ids.map((id) => (
               <Badge pill bg="danger" key={id}>
@@ -31,7 +31,6 @@ const MovieCard = ({movie,index}) => {
           </div>
 
         </div>
-      MovieCard
     </div>
    );
 
