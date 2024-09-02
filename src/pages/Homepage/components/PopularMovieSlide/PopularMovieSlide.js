@@ -2,13 +2,13 @@ import React from 'react';
 import { usePopularMoviesQuery } from '../../../../hook/usePopularMovies';
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-import { Alert } from 'react-bootstrap'; 
+import { Alert, Container } from 'react-bootstrap'; 
 import MovieCard from '../MovieCard/MovieCard';
 import './PopularMovieSlide.style.css'
 const responsive = {
   desktop: {
     breakpoint: { max: 3000, min: 1024 },
-    items: 8,
+    items: 5,
 
   },
   tablet: {
@@ -33,7 +33,9 @@ const PopularMovieSlide = () => {
   }
 return (<div>
   <div className='popular_title'>
+  <Container>
   <h2>Popular movies</h2>
+  </Container>
   </div>
 <Carousel
   // swipeable={false}
