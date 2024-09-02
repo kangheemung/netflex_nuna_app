@@ -8,11 +8,9 @@ const Banner = () => {
     if (isLoading) {
       return <div>Loading...</div>;
     }
-  
     if (isError) {
       return <Alert variant='danger'>Error: {error.message}</Alert>;
     }
-  
     return (
       <div className='banner_area'>
       <div style={{

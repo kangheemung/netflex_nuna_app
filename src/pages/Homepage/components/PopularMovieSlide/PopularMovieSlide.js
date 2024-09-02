@@ -57,7 +57,6 @@ return (<div>
   {data.results.map((movie, index) => (
           <MovieCard movie={movie} key={index} />
         ))}
-
 </Carousel>
   </div>
   );
