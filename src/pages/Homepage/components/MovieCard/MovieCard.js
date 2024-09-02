@@ -13,8 +13,8 @@ const MovieCard = ({movie,index}) => {
     }}
     className='MovieCard'
   >
-        <div key={index} >
-          <div className='Movie_Card_text'>
+        <div key={index} className='Movie_Card_text' >
+        
             <h5>{movie.title}</h5>
             <p>
             {movie.genre_ids.map((id) => (
@@ -28,7 +28,7 @@ const MovieCard = ({movie,index}) => {
             <div>{movie.popularity}</div>
             <div>{movie.adult ? 'over18' : 'under18'}</div>
           </div>
-          </div>
+      
 
         </div>
     </div>
