@@ -32,8 +32,9 @@ const PopularMovieSlide = () => {
     return <Alert variant="danger">{error.message}</Alert>;
   }
 return (<div>
-  <h3>Popular movies</h3>
-
+  <div className='popular_title'>
+  <h2>Popular movies</h2>
+  </div>
 <Carousel
   // swipeable={false}
   // draggable={false}

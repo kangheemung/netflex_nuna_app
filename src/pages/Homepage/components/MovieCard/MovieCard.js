@@ -1,6 +1,7 @@
 import React from 'react'
 import Badge from 'react-bootstrap/Badge';
 import './MovieCard.style.css';
+import{number}from './18.png';
 
 const MovieCard = ({movie,index}) => {
   return (
@@ -14,7 +15,6 @@ const MovieCard = ({movie,index}) => {
     className='MovieCard'
   >
         <div key={index} className='Movie_Card_text' >
-        
             <h5>{movie.title}</h5>
             <p>
             {movie.genre_ids.map((id) => (
@@ -24,12 +24,10 @@ const MovieCard = ({movie,index}) => {
            ))}
             </p>
           <div>
-            <div>{movie.vote_average}</div>
-            <div>{movie.popularity}</div>
-            <div>{movie.adult ? 'over18' : 'under18'}</div>
+            <div>⭐️{movie.vote_average.toFixed(1)}</div>
+            <div>{movie.popularity.toFixed(0)}</div>
+            <div>{movie.adult ? <img src={require('./18.png')} alt="over18" /> : '👶18under'}</div>
           </div>
-      
-
         </div>
     </div>
    );

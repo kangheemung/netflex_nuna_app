@@ -2,3 +2,7 @@
     overflow: hidden;
     height:440px;
 }
+.popular_title{
+    font-weight: bolder;
+margin-top: 24px;
+}
