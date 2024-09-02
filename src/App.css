@@ -4,6 +4,10 @@
   box-sizing: border-box;
 }
 
+body {
+  background-color: black  !important;
+  color: #fff;
+}
 .App {
   text-align: center;
   background-color: black;
@@ -13,9 +17,6 @@
 @media (max-width: 768px) {
   .App {
     flex-wrap: wrap;
-    background-color: black;
 
-    font-size: 14px; /* Reduce font size for readability on smaller screens */
-    height: 100vh; /* Allow content to expand vertically */
   }
 }
