@@ -46,9 +46,23 @@
     .Movie_Card_text {
         padding-top: 10px;
     }
-}
-
-/* General styles for '.MovieCard' */
+    .Movie_Card_text {
+        width: 100%;
+        padding-top: 100px;
+        background: rgba(43, 41, 41, 0.9);
+        height: 100%;
+        opacity: 0;
+        transition: all 0.5s;
+        color: white;
+        font-weight: bold;
+        overflow-wrap: break-word;
+        z-index: 1; /* 新しく追加 */
+        align-items: center; /* このプロパティは flex コンテナ内でのみ有効です */
+        justify-content: center; /* 新しく追加 */
+        align-items: center; /* 新しく追加 */
+        position: absolute; /* 新しく追加 */
+        background: rgba(43, 41, 41, 0.9); /* 新しく追加 */
+    }
 .MovieCard {
     height: 300px; /* Adjusted height for mobile view */
     width: 100%;
@@ -71,4 +85,4 @@
 .carousel-container,
 .react-multi-carousel-track {
     margin: 0;
-}
+}}
