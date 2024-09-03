@@ -2,8 +2,12 @@ import React from 'react'
 import Badge from 'react-bootstrap/Badge';
 import './MovieCard.style.css';
 import{number}from './18.png';
+import { useMovieGenreQuery } from '../../hook/useMovieGenre';
 
-const MovieCard = ({movie,index}) => {
+const MovieCard = ({movie}) => {
+
+const{data:genreData}= useMovieGenreQuery();
+console.log("ggg", genreData);
   return (
     <div
     style={{
@@ -14,15 +18,15 @@ const MovieCard = ({movie,index}) => {
     }}
     className='MovieCard'
   >
-        <div key={index} className='Movie_Card_text' >
+        <div className='Movie_Card_text' >
             <h5>{movie.title}</h5>
-            <p>
-            {movie.genre_ids.map((id) => (
-              <Badge pill bg="danger" key={id}>
+          <p>
+            {movie.genre_ids.map((id,idx) => (
+              <Badge pill bg="danger" key={idx}>
                  {id}
-               </Badge>
+              </Badge>
            ))}
-            </p>
+          </p>
           <div>
             <div>⭐️{movie.vote_average.toFixed(1)}</div>
             <div>{movie.popularity.toFixed(0)}</div>

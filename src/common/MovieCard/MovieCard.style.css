@@ -17,7 +17,8 @@
 }
 .react-multi-carousel-list ,
 .carousel-container,
-.react-multi-carousel-track {
+.react-multi-carousel-track
+{
     margin: 0;
 }
 .Movie_Card_text:hover{
@@ -39,4 +40,35 @@
     transform: scale(1.3) translatez(5px);
     z-index: 999;
 
+}
+/* Other adjustments for responsiveness */
+@media screen and (max-width: 768px) {
+    .Movie_Card_text {
+        padding-top: 10px;
+    }
+}
+
+/* General styles for '.MovieCard' */
+.MovieCard {
+    height: 300px; /* Adjusted height for mobile view */
+    width: 100%;
+    background-size: cover; /* Adjusted background size property */
+    background-repeat: no-repeat;
+    cursor: pointer;
+    transition: 0.5s;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Hover effect for '.MovieCard' */
+.MovieCard:hover {
+    transform: scale(1.1); /* Adjusted scale value for mobile view */
+    z-index: 999;
+}
+
+/* Additional styles for carousel components */
+.react-multi-carousel-list,
+.carousel-container,
+.react-multi-carousel-track {
+    margin: 0;
 }
