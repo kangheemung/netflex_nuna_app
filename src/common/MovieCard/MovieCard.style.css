@@ -39,12 +39,20 @@
 .MovieCard:hover{
     transform: scale(1.3) translatez(5px);
     z-index: 999;
+}
+.bedge_Movie{
+    width: 80%;
+    flex-wrap: wrap;
 
 }
 /* Other adjustments for responsiveness */
 @media screen and (max-width: 768px) {
     .Movie_Card_text {
         padding-top: 10px;
+    }
+    .bedge_Movie{
+        width: 90%;
+        flex-wrap: wrap;
     }
     .Movie_Card_text {
         width: 100%;

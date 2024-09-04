@@ -33,13 +33,13 @@ const MovieCard = ({ movie }) => {
             <h5>{movie.title}</h5>
             <p>
             {genreData && (
-                    <p>
+                    <div className='bedge_Movie'>
                         {showGenre(movie.genre_ids).map((genre, index) => (
                             <Badge pill bg="danger" key={index}>
                                 {genre}
                             </Badge>
                         ))}
-                    </p>
+                    </div>
                 )}
             </p>
           <div>
