@@ -9,7 +9,6 @@ const MovieCard = ({ movie }) => {
 
   const showGenre = (genreIdList) => {
       if (!Array.isArray(genreData)) return [];
-      
       const genreNameList = genreIdList.map((id) => {
           const genreObj = genreData.find((genre) => genre.id === id);
           return genreObj ? genreObj.name : 'Genre not found';

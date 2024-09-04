@@ -7,14 +7,22 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import { Outlet } from 'react-router-dom';
+import { Outlet, useNavigate } from 'react-router-dom';
 import './AppLayout.style.css'
 import hambergerIcon from './hamberger.png';
 
 
 const AppLayout = () => {
+  const [keyword,setKeyword]=useState('');
+  const navigate=useNavigate()
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-
+  
+  const serchBykeyword=(e)=>{
+    e.preventDefault();
+    //url를 바꿔준다.
+    navigate(`/movies?q=${keyword}`);
+    setKeyword("");
+  };
   const toggleSidebar = () => {
       setIsSidebarOpen(!isSidebarOpen);
   };
@@ -52,10 +60,12 @@ const AppLayout = () => {
           </Nav>
           </div>
           <div className='search_box'>
-            <Form  inline="true">
+            <Form  inline="true"className='d-flex' onSubmit={serchBykeyword}>
               <Row className="justify-content-center">
               <Col xs="auto">
                 <Form.Control
+                value={keyword}
+                onChange={(e) =>setKeyword(e.target.value)}
                   type="text"
                   placeholder="Search"
                   className=" mr-sm-2"
