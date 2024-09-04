@@ -14,10 +14,9 @@ import hambergerIcon from './hamberger.png';
 
 const AppLayout = () => {
   const [keyword,setKeyword]=useState('');
-  const navigate=useNavigate()
+  const navigate=useNavigate();
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-  
-  const serchBykeyword=(e)=>{
+  const serchBykeyword =(e)=>{
     e.preventDefault();
     //url를 바꿔준다.
     navigate(`/movies?q=${keyword}`);
