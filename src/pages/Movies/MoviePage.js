@@ -1,4 +1,4 @@
-import React,{useState}from 'react';
+import React,{useState,useEffect}from 'react';
 import './MoviePage.style.css';
 import { Row, Col, Container, Alert , Spinner} from 'react-bootstrap';
 import { useSearchMovieQuery} from '../../hook/useSearchMovie';
@@ -17,15 +17,18 @@ const MoviePage = () => {
 
   const [query, setQuery] = useSearchParams();
   const [page,setPage] = useState(1);
-  const keyword = query.get("q");
-
-
+  const keyword = query.get('q') || '';
   const { data, isLoading, isError, error } = useSearchMovieQuery({keyword,page});
+  const [hasResults, setHasResults] = useState(true);
   console.log("Moviepage", data);
   const handlePageClick=({selected}) => {
     //console.log("page",page);
     setPage(selected + 1);
   };
+
+  useEffect(() => {
+    setHasResults(data?.results.length > 0);
+  }, [data]);
 
   if(isLoading){
     return (
@@ -40,14 +43,28 @@ const MoviePage = () => {
   if(isError){
     return <Alert variant="danger">{error.message}</Alert>;
   }
-  return (
+  if (!hasResults && keyword) {
+    return (
+      <Container>
+        <Row>
+          <Col>
+            <div className="no-results-message">
+              <h3>No search results found for "{keyword}"</h3>
+            </div>
+          </Col>
+        </Row>
+      </Container>
+    );
+  }
+
+ return (
       <Container>
         <Row></Row>
         <Row>
-          <Col lg={4} xs={12}>
+          {/* <Col lg={4} xs={12}>
             {" "}
             필터{" "}
-          </Col>
+          </Col> */}
           <Col>
             <Row>
               {data?.results.map((movie, index) => (
