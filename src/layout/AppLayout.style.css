@@ -2,6 +2,9 @@
 .header_text{
     display: block;
 }
+.search_box{
+    display: flex;
+}
 .loge_img{
     margin-right: 10px;
 }
@@ -42,11 +45,8 @@ display: none;
 }
 .sidebar{display: none}
 @media (max-width: 768px) {
-    .Navbar_full {
-        flex-direction: column;
-        align-items: center;
 
-    }
+    
 .hanberger{
     margin-right: 1em;
 display: block;

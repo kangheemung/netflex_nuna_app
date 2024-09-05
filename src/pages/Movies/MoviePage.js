@@ -29,6 +29,9 @@ const MoviePage = () => {
   useEffect(() => {
     setHasResults(data?.results.length > 0);
   }, [data]);
+  useEffect(() => {
+    setPage(1);
+  }, [keyword]);
 
   if(isLoading){
     return (
@@ -58,23 +61,18 @@ const MoviePage = () => {
   }
 
  return (
-      <Container>
-        <Row></Row>
-        <Row>
-          {/* <Col lg={4} xs={12}>
-            {" "}
-            필터{" "}
-          </Col> */}
-          <Col>
-            <Row>
+        <>
+          <Container>
+          <Row className="justify-content-center">
               {data?.results.map((movie, index) => (
-                <Col key={index} lg={4} md={6} sm={8} xs={12} >
-                   <div className="movie-card-wrapper">
-                    <MovieCard movie={movie} />
-                   </div>
+                <Col key={index} lg={4} md={6} sm={8} xs={12} className="movie-card-wrapper" style={{ maxWidth: "210px" }}>
+                  <MovieCard movie={movie} />
                 </Col>
               ))}
             </Row>
+          </Container>
+          <div className="d-flex justify-content-center">
+
             <ReactPaginate
                 nextLabel="next >"
                 onPageChange={handlePageClick}
@@ -94,12 +92,11 @@ const MoviePage = () => {
                 containerClassName="pagination"
                 activeClassName="active"
                 renderOnZeroPageCount={null}
-                forcePage={page-1}
+                forcePage={page - 1}
             />
-          </Col>
-        </Row>
-      </Container>
-  );
-};
+          </div>
+         </>
+      );
+    };
 
 export default MoviePage

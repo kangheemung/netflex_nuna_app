@@ -1,27 +1,23 @@
-.movie-card-wrapper {
-    display: flex;
-    flex-direction: column;
-    text-align: centerå;
-    max-width: 210px;
-    justify-content: center;
-    align-items: center;
+
+@media (max-width: 576px) {
+    .movie-card-wrapper {
+        display: flex;
+        max-width: 210px;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        justify-content: center; /* Center content horizontally */
+    }
+
+    .movie-card-wrapper img {
+
+        display: block;
+        border-radius: 10%;
+        margin: 0 auto; /* Center the image horizontally */
+        width: 100%; /* Make the image fill the width of the movie card */
+        height: auto;
+    }
+    .pagination {
+        max-width: 300px;
+        margin: 0 auto;
+    }
 }
-  .movie-card-wrapper .card {
-    flex: 1;
-  }
-  /* MoviePage.style.css */
-
-.movie-card-wrapper {
-    margin-bottom: 20px; /* Add margin below each MovieCard */
-  }
-
-  /* Style the image inside the MovieCard */
-  .movie-card-wrapper img {
-    margin: 0 auto; /* Center the image horizontally */
-  }
-  
-  /* Add specific margin to the image */
-  .movie-card-wrapper img {
-    margin: 10px; /* Add margin around the image */
-  }
-  
