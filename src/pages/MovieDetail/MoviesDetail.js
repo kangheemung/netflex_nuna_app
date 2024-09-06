@@ -54,11 +54,11 @@ const MoviesDetail = ({ movie }) => {
   <>
 
  
-              <Row　style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '100vh' }}>
-              <Col xs={12} md={6}>
+              <Row style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '100vh' }}>
+              <Col xs={12} md={6} style={{height:"500px"}}>
              <Container style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                 <div 
-                  style={{
+                  style={{height: "450px",
                       backgroundImage: detailData.poster_path ? `url(https://www.themoviedb.org/t/p/w300_and_h450_bestv2${detailData.poster_path})` : 'none'
                   }} 
                   className='MovieCard'
