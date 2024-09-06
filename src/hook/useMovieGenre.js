@@ -5,6 +5,7 @@ const fetchMovieGenre = async() => {
     try {
         const response = await api.get('/genre/movie/list');
         return response.data.genres;
+   
     } catch (error) {
         throw new Error('Failed to fetch popular movies');
     }

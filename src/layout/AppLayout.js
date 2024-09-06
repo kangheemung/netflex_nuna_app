@@ -12,7 +12,7 @@ import './AppLayout.style.css'
 import hambergerIcon from './hamberger.png';
 
 
-const AppLayout = () => {
+const AppLayout = ({ movie_id }) => {
   const [keyword,setKeyword]=useState('');
   const [searchResults, setSearchResults] = useState([]);
   const navigate=useNavigate();
@@ -61,7 +61,7 @@ const AppLayout = () => {
           <Nav className="me-auto">
             <Nav.Link href="/" >Homepage</Nav.Link>
             <Nav.Link href="/movies">Movies</Nav.Link>
-            <Nav.Link href="/movies/:id">MoviesDetail</Nav.Link>
+    
           </Nav>
           </div>
           <div className='search_box'>
@@ -89,7 +89,6 @@ const AppLayout = () => {
               <Nav.Link onClick={() => setIsSidebarOpen(false)}>X</Nav.Link>
                 <Nav.Link href="/" >Homepage</Nav.Link>
                 <Nav.Link href="/movies">Movies</Nav.Link>
-                <Nav.Link href="/movies/:id">MoviesDetail</Nav.Link>
               </Nav>
               <Form  inline="true" onSubmit={serchBykeyword}>
               <Row className="justify-content-center">

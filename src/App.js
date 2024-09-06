@@ -22,8 +22,8 @@ function App() {
           {/* Movie Pages */}
           <Route path = "movies">
             <Route index element={<MoviePage />}/>  {/*//Moviegroup 화면 */}
-            <Route path=":id" element={<MoviesDetail/>}/>
           </Route>
+          <Route path="/movie/:id" element={<MoviesDetail />} />
              {/* Not Found Page */}
           <Route path="*" element={<Notfoundpage />}/>   {/*/Notfoundpage 화면 */}
           {/* <Route path="/admin" elements={ AppLayout}> //admin 화면 */}

@@ -2,6 +2,7 @@ import React,{useState,useEffect}from 'react';
 import './MoviePage.style.css';
 import { Row, Col, Container, Alert , Spinner} from 'react-bootstrap';
 import { useSearchMovieQuery} from '../../hook/useSearchMovie';
+import {useDetailsMovieQuery} from '../../hook/useMovieDetail';
 import { useSearchParams } from 'react-router-dom';
 import MovieCard from '../../common/MovieCard/MovieCard';
 import ReactPaginate from 'react-paginate';
@@ -13,16 +14,17 @@ import ReactPaginate from 'react-paginate';
 //page state만들기
 //페이지네이션 클릭할때마다 page 바꿔주기
 //page 값이 바뀔때 마다 useSearchMovie에 page 까지 넣어서 fetch
-const MoviePage = () => {
+const MoviePage = ({movie}) => {
 
   const [query, setQuery] = useSearchParams();
   const [page,setPage] = useState(1);
   const keyword = query.get('q') || '';
+  const { data: details = { runtime: 0 } } = useDetailsMovieQuery(movie?.id);
   const { data, isLoading, isError, error } = useSearchMovieQuery({keyword,page});
   const [hasResults, setHasResults] = useState(true);
   console.log("Moviepage", data);
   const handlePageClick=({selected}) => {
-    //console.log("page",page);
+    console.log("page",page);
     setPage(selected + 1);
   };
 
