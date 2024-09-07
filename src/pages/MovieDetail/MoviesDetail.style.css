@@ -5,13 +5,18 @@
     align-items: center;
     text-align: center;
   }
+  .badge{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    font-size: 18px;
+}
   .detailData_container_text{
     margin: 1em;
   }
   .badge-content {
     white-space: normal; /* Allow text to wrap */
 }
-
     .movie-detail-col {
         display: flex;
         flex-direction: row;
@@ -20,6 +25,7 @@
         max-width: 850px ;
         margin: 1em;
     }
+  
     .detailData_number{
         flex-direction: column;
         display: flex;
@@ -37,7 +43,11 @@
    
 }
 @media (max-width: 468px) {
-  
+    .badge{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
     .detailData_container{
         display: flex;
         justify-content: center;
