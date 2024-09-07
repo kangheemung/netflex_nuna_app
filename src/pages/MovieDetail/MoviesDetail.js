@@ -1,6 +1,4 @@
 import React,{ useState } from "react";
-
-
 import { Row,Stack , Badge, Col, Container, Alert , Spinner} from 'react-bootstrap';
 import './MoviesDetail.style.css';
 import {useDetailsMovieQuery} from '../../hook/useMovieDetail';
@@ -51,38 +49,51 @@ const MoviesDetail = ({ movie }) => {
   }
   console.log("movie :", detailData);
   return (
-  <>
+   <>
+    <div>
+      <Row style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '100vh' }}>
+          <Col xs={12} md={6} style={{ height: "500px", minHeight: '100vh', display: 'flex', justifyContent: 'center', alignItems: 'center', textAlign: 'center' }}>
+              <Container >
+             <div
+                style={{
+                    height: "650px",
+      
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                  // Ensure the background image covers the entire container
+                   backgroundPosition: 'center',
+                    backgroundImage: detailData.poster_path ? `url(https://www.themoviedb.org/t/p/w300_and_h450_bestv2${detailData.poster_path})` : 'none'
+                }}
+                className='MovieCard'
+            />
 
- 
-              <Row style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '100vh' }}>
-              <Col xs={12} md={6} style={{height:"500px"}}>
-             <Container style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                <div 
-                  style={{height: "450px",
-                      backgroundImage: detailData.poster_path ? `url(https://www.themoviedb.org/t/p/w300_and_h450_bestv2${detailData.poster_path})` : 'none'
-                  }} 
-                  className='MovieCard'
-              ></div>
             </Container>
-            </Col>
-            <Col xs={12} md={6}>
+          </Col>
+          <Col xs={12} md={6}>
              <Container style={{  justifyContent: 'center', alignItems: 'center' }}>
                 <h2>{detailData.title}</h2>
-                <Badge pill bg="danger">Genres: {detailData.genres.map(genre => genre.name).join(', ')} </Badge>
-                <p>Popularity: {detailData.popularity}</p>
-                {detailData.overview}
-                <div className="detailData_number">
-                <div className="detailData_number_detail"><Badge pill bg="danger">Budget</Badge> ${detailData.budget.toLocaleString()}</div>
-                <div className="detailData_number_detail"><Badge pill bg="danger"> Revenue</Badge> ${detailData.revenue.toLocaleString()}</div>
-                <div className="detailData_number_detail"><Badge pill bg="danger">Release Date</Badge> {detailData.release_date}</div>
-                <div className="detailData_number_detail"><Badge pill bg="danger"> Runtime</Badge> {detailData.runtime}minute</div>
+                <Badge  xs={12} md={6} style={{  margin1:"1em",padding:"8px" }} pill bg="danger" className="d-flex justify-content-center align-items-center badge-content">
+                  {detailData.genres.map(genre => genre.name).join(', ')}
+                </Badge>
+                <div className="detailData_container">
+                  <div className="detailData_container_text"><img/> {detailData.vote_average}</div>
+                  <div className="detailData_container_text"><img/> {detailData.popularity}</div>
+                  <div className="detailData_container_text">{detailData.adult ? <img  alt="🔞" /> : '👶ALL'}</div>
                 </div>
-              </Container>
-              </Col>
-              </Row>
-
-         
-   
+                <div>
+                {detailData.overview}
+                </div>
+                <div className="detailData_number">
+                  <div className="detailData_number_detail"><Badge pill bg="danger">Budget</Badge> ${detailData.budget.toLocaleString()}</div>
+                  <div className="detailData_number_detail"><Badge pill bg="danger"> Revenue</Badge> ${detailData.revenue.toLocaleString()}</div>
+                  <div className="detailData_number_detail"><Badge pill bg="danger">Release Date</Badge> {detailData.release_date}</div>
+                  <div className="detailData_number_detail"><Badge pill bg="danger"> Runtime</Badge> {detailData.runtime}minute</div>
+                </div>
+            </Container>
+          </Col>
+        </Row>
+      </div>
   </>
   );
 };
