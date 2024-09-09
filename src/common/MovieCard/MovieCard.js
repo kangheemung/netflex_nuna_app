@@ -25,10 +25,8 @@ const MovieCard = ({ movie }) => {
     navigate(`/movie/${id}`);
   }
 
-console.log("movie",movie);
-    console.log("ggg", genreData);
-  
-
+//console.log("movie",movie);
+    //console.log("ggg", genreData);
     return (
 
         <div

@@ -6,8 +6,9 @@ import { useParams } from 'react-router-dom';
 import MovieReview from "./MovieReview/MovieReview";
 import MovieRecommend from "./MovieRecommend/MovieRecommend";
 import MovieYouTube from "./MovieYouTube/MovieYouTube";
-import { useMovieYoutubeQuery } from '../../hook/useMovieYoutude';
-
+import YouTube from 'react-youtube';
+import { useMovieYoutubeQuery } from "../../hook/useMovieYoutube";
+import{useMovieGenreQuery} from "../../hook/useMovieGenre";
 //vercel
 //카드를 클릭하면 영화 상세페이지롤 넘어간다.
 //상세 페이지 디자인
@@ -31,23 +32,16 @@ const MoviesDetail = ({ movie }) => {
   const { id } = useParams();
   const [isOpen, setOpen] = useState(false);
   const { data: detailData, isLoading: detailIsLoading, isError: detailIsError, error: detailError } = useDetailsMovieQuery(id);
-  const {data: videoData} = useMovieYoutubeQuery({id});
+  const { data: videoData } = useMovieYoutubeQuery(id);
+  const { data: genreData } = useMovieGenreQuery();
+   console.log("vedeo",videoData);
   console.log("detail",detailData);
-  const opts = {
-    height: '100%',
-    width: '100%',
-    playerVars: {
-        autoplay: 1,
-    },
-};
+
   const handleClick = () => {
-    setOpen(true);
+    setOpen(!isOpen);
   };
-  const video = (event) => {
-    event.target.pauseVideo();
-  };
-  
-   
+
+
   if (detailIsLoading) {
     return (
       <div className='spinner-area'>
@@ -56,40 +50,49 @@ const MoviesDetail = ({ movie }) => {
     );
   }
 
-  if (detailIsError) {
-    return <Alert variant="danger">{detailError.message}</Alert>; // Corrected 'error' to 'detailError'
+  if  (detailIsError) {
+    return <Alert variant="danger">{detailError.message}</Alert>;
   }
 
-  if (!id) {
-    return <Alert variant="warning">영화 정보를 불러올 수 없습니다.</Alert>;
-  }
-
-
+  const trailerKey = videoData?.[0]?.key ?? '';
+console.log("trailerKey",trailerKey)
   return (
-   
+
     <Container>
-     <div>
-    {videoData && videoData.length > 0 && (
-        <MovieYouTube id={videoData[0].key} opts={opts} video={video} className="video_area" />
-    )}
-</div>
-       
+    
             <Row style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '100vh' }}>
-           
                 <Col xs={12} md={6}>
                     <div className='MovieCard' style={{
                         height: "650px",
                         backgroundImage: detailData.poster_path ? `url(https://www.themoviedb.org/t/p/w300_and_h450_bestv2${detailData.poster_path})` : 'none',
                     }} />
-                </Col>
-                <Col xs={12} md={6}>
-                    <div style={{ justifyContent: 'center', alignItems: 'center' }}>
-                        <h2>{detailData.title}</h2>
-                        <div className="badge-container badge">
+                      <div className= "detail_text_box"style={{ textAlign: 'left' ,margin: "1em" }}>
+                         <h2 style={{ textAlign: 'left' ,margin_left: "1em" }}>{detailData.title}</h2>
+                        <div className="badge-container badge" style={{ display: 'flex'}}>
                             {detailData.genres.map((genre, index) => (
-                                <Badge key={index} pill bg="danger" style={{ margin: "1em", padding: "1em", fontSize: "12px" }}>{genre.name}</Badge>
+                                <Badge key={index} pill bg="danger" style={{ margin: "1em", padding: "1em", fontSize: "8px" }}>{genre.name}</Badge>
                             ))}
                         </div>
+                        {detailData&&
+                              <div  >
+                                  <div className='play-button'>
+                                    <Button variant='danger' onClick={() => setOpen(true)}>
+                                      Preview<span className='btn-play'> ▶</span>
+                                    </Button>
+                                  </div>
+                                    {isOpen &&<MovieYouTube
+                                                movieID={trailerKey}
+                                                show={isOpen}  onHide={() => setOpen(false)}
+                                                className="video_area"
+                                    />}
+                              </div>}
+                      </div>
+           
+                </Col>
+                
+                <Col xs={12} md={6}>
+                    <div style={{ justifyContent: 'center', alignItems: 'center' }}>
+                     
                         <div className="detailData_container">
                             <div className="detailData_container_text"><img alt='Vote Average'/> {detailData.vote_average}</div>
                             <div className="detailData_container_text"><img alt='Popularity'/> {detailData.popularity}</div>
@@ -102,19 +105,15 @@ const MoviesDetail = ({ movie }) => {
                             <div className="detailData_number_detail"><Badge pill bg="danger">Release Date</Badge> {detailData.release_date}</div>
                             <div className="detailData_number_detail"><Badge pill bg="danger">Runtime</Badge> {detailData.runtime} minutes</div>
                         </div>
-                       
-                        <Button onClick={handleClick}>예고</Button>
-                        {isOpen && <MovieYouTube id={id} />}
                     </div>
-                   
                 </Col>
             </Row>
-
             <MovieRecommend id={id} />
             <MovieReview id={id} />
         </Container>
 
   );
+
 };
 
 

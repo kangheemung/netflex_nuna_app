@@ -6,7 +6,10 @@ import {useDetailsMovieQuery} from '../../hook/useMovieDetail';
 import { useSearchParams } from 'react-router-dom';
 import MovieCard from '../../common/MovieCard/MovieCard';
 import ReactPaginate from 'react-paginate';
-
+import Dropdown from 'react-bootstrap/Dropdown';
+import DropdownButton from 'react-bootstrap/DropdownButton';
+import Feedback from 'react-bootstrap/esm/Feedback';
+import { useMovieGenreQuery } from "../../hooks/useMovieGenre";
 //경로 2가지
 //nav 바에서 클릭해서 온 경우 =>popularMovie 보여주기
 //keyword입력해서 온경우 =>keyword와 관련된 영화들을 보여줌
@@ -21,16 +24,41 @@ const MoviePage = ({movie}) => {
   const keyword = query.get('q') || '';
   const { data: details = { runtime: 0 } } = useDetailsMovieQuery(movie?.id);
   const { data, isLoading, isError, error } = useSearchMovieQuery({keyword,page});
+  const { data: genreData, isLoading: isGenreLoading, isError: isGenreError } = useMovieGenreQuery();
   const [hasResults, setHasResults] = useState(true);
+  const [selectedSort, setSelectedSort] = useState("Most Popular");
   console.log("Moviepage", data);
+
   const handlePageClick=({selected}) => {
-    console.log("page",page);
+    //console.log("page",page);
     setPage(selected + 1);
   };
 
+  const filteredMovies = genreId
+    ? data?.results?.filter((movie) =>
+        movie.genre_ids.includes(parseInt(genreId, 10))
+      )
+    : data?.results;
+
+// 인기순으로 정렬
+  const sortMoviesByPopularity = filteredMovies?.sort((a, b) => {
+    switch (selectedSort) {
+      case "Most Popular":
+        return b.popularity - a.popularity;
+      case "Least Popular":
+        return a.popularity - b.popularity;
+      case "Latest":
+        return new Date(b.release_date) - new Date(a.release_date);
+      case "Alphabetical":
+        return a.title.localeCompare(b.title);
+      default:
+        return 0;
+    }
+  });
   useEffect(() => {
     setHasResults(data?.results.length > 0);
   }, [data]);
+
   useEffect(() => {
     setPage(1);
   }, [keyword]);
@@ -64,9 +92,17 @@ const MoviePage = ({movie}) => {
 
  return (
         <>
+        <div className='sort_button'>
+        <DropdownButton variant="outline-danger" id="dropdown-basic-button" title="popularity">
+          <Dropdown.Item href="#/action-1" onClick={() => setQuery('sort', 'popularity')}>Most popular</Dropdown.Item>
+          <Dropdown.Item href="#/action-2" onClick={() => setQuery('sort', 'popularity')}>Lowest popularity</Dropdown.Item>
+
+        </DropdownButton>
+        </div>
           <Container>
           <Row className="justify-content-center">
-              {data?.results.map((movie, index) => (
+          {sortMoviesByPopularity(data?.results).map((movie, index) => (
+
                 <Col key={index} lg={4} md={6} sm={8} xs={12} className="movie-card-wrapper" style={{ maxWidth: "210px" }}>
                   <MovieCard movie={movie} />
                 </Col>

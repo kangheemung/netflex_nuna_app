@@ -11,5 +11,5 @@ export const useReviewMovieQuery = ({ id }) => {
     queryFn: () => fetchMovieReview({ id }),
     select: (result) => result.data,
     gcTime: 10000,
-  });}
-  ;
+  });
+};
