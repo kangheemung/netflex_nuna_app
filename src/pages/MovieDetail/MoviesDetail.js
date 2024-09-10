@@ -94,8 +94,8 @@ console.log("trailerKey",trailerKey)
                     <div style={{ justifyContent: 'center', alignItems: 'center' }}>
                      
                         <div className="detailData_container">
-                            <div className="detailData_container_text"><img alt='Vote Average'/> {detailData.vote_average}</div>
-                            <div className="detailData_container_text"><img alt='Popularity'/> {detailData.popularity}</div>
+                            <div className="detailData_container_text"> {detailData.vote_average}</div>
+                            <div className="detailData_container_text">{detailData.popularity}</div>
                             <div className="detailData_container_text">{detailData.adult ? <img alt="Adult" src="adult-icon.png" /> : 'All Ages'}</div>
                         </div>
                         <div>{detailData.overview}</div>
